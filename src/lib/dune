@@ -1,0 +1,4 @@
+(library
+  (public_name tuck)
+  (depends eio eio_main wayland))
+
