@@ -2,5 +2,4 @@
 
 (package
   (name tuck)
-  (depends wayland eio))
-
+  (depends wayland eio eio_main))
