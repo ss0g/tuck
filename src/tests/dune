@@ -1,0 +1,4 @@
+(executable
+  (public_name test1)
+  (libraries lib eio_main fmt logs logs.fmt))
+

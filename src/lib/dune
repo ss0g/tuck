@@ -3,5 +3,6 @@
 (library
   (public_name tuck)
   (name lib)
-  (libraries eio eio_main wayland))
+  (wrapped false)
+  (libraries eio eio_main wayland wayland.protocols))
 
