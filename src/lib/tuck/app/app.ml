@@ -1,9 +1,17 @@
+(*
 open Wayland
 open Wayland_protocols.Xdg_shell_client
 open Wayland.Wayland_client
 open Eio.Std
+*)
 
-type t = {
+(* temporary type, should probably be some sort of record or object *)
+type t = [`App]
+let create (_main : Eio_unix.Stdenv.base -> unit) : t = `App
+
+(*
+
+type t2 = {
     shm : [`V1] Wl_shm.t;
     surface : [`V4] Wl_surface.t;
     mutable fg : int32;
@@ -142,4 +150,6 @@ let main ~net =
             animate ()
         in
         animate ()
+
+*)
 
