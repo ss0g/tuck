@@ -1,6 +1,7 @@
 open Eio.Std
 
 module Buffer = Buffer
+module Tuck_env = Tuck_env
 
 module type App = sig
     val main : Eio_unix.Stdenv.base -> Eio.Switch.t -> unit
