@@ -15,8 +15,8 @@ module Start_app (A : App) = struct
         Eio_main.run @@ fun env ->
             Switch.run @@ fun sw ->
                 let transport = Unix_transport.connect ~sw ~net:env#net () in
-                let display = Client.connect ~sw transport in
-                let reg = Registry.of_display display in
+                let client = Client.connect ~sw transport in
+                let reg = Registry.of_display client in
                 let compositor =
                     Registry.bind reg (new Wayland_client.Wl_compositor.v4)
                 in
@@ -31,6 +31,7 @@ module Start_app (A : App) = struct
                     compositor;
                     xdg_wm_base;
                 } in
-                A.main ~tuck_env
+                A.main ~tuck_env;
+                Client.stop client;
 end
 
