@@ -8,4 +8,4 @@ let () =
     Logs.set_level (Some Info);
     Printexc.record_backtrace true;
 
-    let module _ = Tuck.Start_app(App_test) in ()
+    module _ = Tuck.Start_app(App_test)
