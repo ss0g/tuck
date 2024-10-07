@@ -1,5 +1,6 @@
 open Eio.Std
 open Wayland
+open Wayland_protocols.Xdg_shell_client
 
 module Buffer = Buffer
 module Tuck_env = Tuck_env
@@ -18,11 +19,16 @@ module Start_app (A : App) = struct
                 let reg = Registry.of_display display in
                 let compositor =
                     Registry.bind reg (new Wayland_client.Wl_compositor.v4) in
+                let xdg_wm_base = Registry.bind reg @@ object
+                    inherit [_] Xdg_wm_base.v1
+                    method on_ping = Xdg_wm_base.pong
+                end in
                 let tuck_env : Tuck_env.t = {
                     eio_env = env;
                     switch = sw;
                     reg;
                     compositor;
+                    xdg_wm_base;
                 } in
                 A.main ~tuck_env
 end
