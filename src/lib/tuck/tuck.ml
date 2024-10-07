@@ -18,7 +18,8 @@ module Start_app (A : App) = struct
                 let display = Client.connect ~sw transport in
                 let reg = Registry.of_display display in
                 let compositor =
-                    Registry.bind reg (new Wayland_client.Wl_compositor.v4) in
+                    Registry.bind reg (new Wayland_client.Wl_compositor.v4)
+                in
                 let xdg_wm_base = Registry.bind reg @@ object
                     inherit [_] Xdg_wm_base.v1
                     method on_ping = Xdg_wm_base.pong
