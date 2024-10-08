@@ -27,6 +27,7 @@ module Start_app (A : App) = struct
                 let tuck_env : Tuck_env.t = {
                     eio_env = env;
                     switch = sw;
+                    client;
                     reg;
                     compositor;
                     xdg_wm_base;
